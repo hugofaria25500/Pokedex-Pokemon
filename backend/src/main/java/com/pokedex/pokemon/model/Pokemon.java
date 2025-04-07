@@ -5,23 +5,19 @@ import java.util.List;
 public class Pokemon {
     private String name;
     private int id;
-    private int generationId;
     private String imageUrl;
-    private String iconUrl;
-    private String type;
-    private String species;
+    private int generation;
+    private List<String> types;
     private double height;
     private double weight;
     private List<String> abilities;
 
-    public Pokemon(String name, int id, int generationId, String imageUrl, String iconUrl, String type, String species, double height, double weight, List<String> abilities) {
+    public Pokemon(String name, int id, int generationId, String imageUrl, List<String> types, double height, double weight, List<String> abilities) {
         this.name = name;
         this.id = id;
-        this.generationId = generationId;
+        this.generation = generationId;
         this.imageUrl = imageUrl;
-        this.iconUrl = iconUrl;
-        this.type = type;
-        this.species = species;
+        this.types = types;
         this.height = height;
         this.weight = weight;
         this.abilities = abilities;
@@ -46,12 +42,12 @@ public class Pokemon {
         this.id = id;
     }
 
-    public int getGenerationId() {
-        return generationId;
+    public int getGeneration() {
+        return generation;
     }
 
-    public void setGenerationId(int generationId) {
-        this.generationId = generationId;
+    public void setGeneration(int generation) {
+        this.generation = generation;
     }
 
     public String getImageUrl() {
@@ -62,28 +58,12 @@ public class Pokemon {
         this.imageUrl = imageUrl;
     }
 
-    public String getIconUrl() {
-        return iconUrl;
+    public List<String> getTypes() {
+        return types;
     }
 
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 
     public double getHeight() {
@@ -114,14 +94,12 @@ public class Pokemon {
     public String toString() {
         return "Pokemon{" +
                 "name='" + name + '\'' +
-                ", id=" + id +
-                ", generationId=" + generationId +
+                ", id=" + id + '\'' +
+                ", generationId=" + generation + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", iconUrl='" + iconUrl + '\'' +
-                ", type='" + type + '\'' +
-                ", species='" + species + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
+                ", type='" + types + '\'' +
+                ", height=" + height + '\'' +
+                ", weight=" + weight + '\'' +
                 ", abilities=" + abilities +
                 '}';
     }
