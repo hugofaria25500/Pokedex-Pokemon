@@ -20,13 +20,13 @@ public class PokemonService {
 
     private List<Pokemon> pokemonList;
 
-    public List<Pokemon> findAll() throws IOException, InterruptedException {
+    public List<Pokemon> findFirstDefault() throws IOException, InterruptedException {
         pokemonList = new ArrayList<>();
 
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest requestFindAll = HttpRequest.newBuilder()
-                .uri(URI.create(PokemonAPI.FIND_ALL))
+                .uri(URI.create(PokemonAPI.FIND_FIRST_DEFAULT))
                 .build();
 
         HttpResponse<String> responseFindAll = client.send(requestFindAll, HttpResponse.BodyHandlers.ofString());
@@ -57,7 +57,14 @@ public class PokemonService {
         return pokemonList;
     }
 
-    public Pokemon findByName(String name) throws IOException, InterruptedException {
+    private Pokemon pokemonMapper(JSONObject jsonObject) throws IOException, InterruptedException {
+        String name = jsonObject.getString("name"); //"name"
+        Pokemon pokemon = findByPokemonByName(name);
+        pokemon.setName(name);
+        return pokemon;
+    }
+
+    public Pokemon findByPokemonByName(String name) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest requestFindAll = HttpRequest.newBuilder()
@@ -67,23 +74,50 @@ public class PokemonService {
         HttpResponse<String> responseFindByName = client.send(requestFindAll, HttpResponse.BodyHandlers.ofString());
         JSONObject pokemonJsonResponse = new JSONObject(responseFindByName.body());
 
-        int id = pokemonJsonResponse.getInt("id"); //"id"
-        int generationId = 0;
-        String imageUrl = "";
-        String iconUrl = "";
-        String type = "";
-        String species = "";
-        double height = 0; //"height"
-        double weight = 0; //"weight"
-        List<String> abilities = new ArrayList<>(); //abilities
+        int id = pokemonJsonResponse.getInt("id");
+        int generationId = getGenerationIdByPokemonId(id);
 
-        return new Pokemon(null, id,generationId, imageUrl, iconUrl, type, species, height, weight, abilities);
+        String imageUrl = pokemonJsonResponse.getJSONObject("sprites").getJSONObject("other").getJSONObject("official-artwork").getString("front_default");
+
+        List<String> types = new ArrayList<>();
+        JSONArray typesResponse = pokemonJsonResponse.getJSONArray("types");
+        for(Object obj : typesResponse) {
+            JSONObject typeWrapper = (JSONObject) obj;
+            JSONObject typeResponse = typeWrapper.getJSONObject("type");
+            String typeName = typeResponse.getString("name");
+            types.add(typeName);
+        }
+
+        double height = pokemonJsonResponse.getInt("height");
+        double weight = pokemonJsonResponse.getInt("weight");
+
+        List<String> abilities = new ArrayList<>();
+        JSONArray abilitiesResponse = pokemonJsonResponse.getJSONArray("abilities");
+        for(Object obj : abilitiesResponse) {
+            JSONObject abilityWrapper = (JSONObject) obj;
+            JSONObject abilityResponse = abilityWrapper.getJSONObject("ability");
+            String abilityName = abilityResponse.getString("name");
+            boolean abilityHidden = abilityWrapper.getBoolean("is_hidden");
+
+            if(!abilityHidden) {
+                abilities.add(abilityName);
+            }
+        }
+
+        return new Pokemon(null, id,generationId, imageUrl, types, height, weight, abilities);
     }
 
-    private Pokemon pokemonMapper(JSONObject jsonObject) throws IOException, InterruptedException {
-        String name = jsonObject.getString("name"); //"name"
-        Pokemon pokemon = findByName(name);
-        pokemon.setName(name);
-        return pokemon;
+    private int getGenerationIdByPokemonId(int pokemonId) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest requestFindAll = HttpRequest.newBuilder()
+                .uri(URI.create(PokemonAPI.FIND_GENERATION_BY_POKEMON_ID + pokemonId))
+                .build();
+
+        HttpResponse<String> responseFindByName = client.send(requestFindAll, HttpResponse.BodyHandlers.ofString());
+        JSONObject pokemonJsonResponse = new JSONObject(responseFindByName.body());
+
+        String generationUrl = pokemonJsonResponse.getJSONObject("generation").getString("url");
+        return Integer.parseInt(String.valueOf(generationUrl.charAt(generationUrl.length()-2)));
     }
 }

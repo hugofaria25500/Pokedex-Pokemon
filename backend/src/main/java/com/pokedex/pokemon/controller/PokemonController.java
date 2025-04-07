@@ -21,7 +21,7 @@ public class PokemonController {
 
     @GetMapping
     public List<Pokemon> getPokemonList() throws IOException, InterruptedException {
-        return pokemonService.findAll();
+        return pokemonService.findFirstDefault();
     }
 
     @GetMapping("/{id}")
