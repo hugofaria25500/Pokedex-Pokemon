@@ -1,0 +1,31 @@
+.home-container {
+    margin: 0;
+}
+
+.navbar {
+    height: 100px;
+    background-color: rgb(134, 8, 8);
+}
+
+.separator {
+    height: 10px;
+    background-color: black;
+}
+
+.navbar h2 {
+    margin: 0;
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* adapta-se ao tamanho da tela */
+    gap: 20px;
+    width: 70%;
+    margin: 0 auto; /* centra horizontalmente */
+    padding: 20px;
+    background-color: black;
+}
+
+.pokemon-card {
+    
+}
