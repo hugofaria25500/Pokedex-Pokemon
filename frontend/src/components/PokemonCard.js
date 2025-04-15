@@ -2,8 +2,9 @@ import React from "react";
 
 export const PokemonCard = (props) => {
     return (
-        <div>
+        <div className="pokemon-card">
             <div className="card-top">
+                <div className={`circle circle-type-${props.types[0].toLowerCase()}`}/>
                 <h3 className="pokemonId">{props.pokemonId}</h3>
                 <img className="pokemonImage" src={props.imageUrl} alt=""></img>
             </div>
