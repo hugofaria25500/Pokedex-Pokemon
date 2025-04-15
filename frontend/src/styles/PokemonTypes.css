@@ -1,0 +1,181 @@
+/*Pokemon Card Types*/
+
+/*BUG*/
+.circle-type-bug {
+    background: radial-gradient(circle at 40% -20%, #113f01 70%, white 50%);
+}
+
+.type-bug {
+    color: white;
+    background-color: #113f01;
+}
+
+/*DARK*/
+.circle-type-dark {
+    background: radial-gradient(circle at 40% -20%, #0f100f 70%, white 50%);
+}
+
+.type-dark {
+    color: white;
+    background-color: #0f100f;
+}
+
+/*DRAGON*/
+.circle-type-dragon {
+    background: radial-gradient(circle at 40% -20%, #243d63 70%, white 50%);
+}
+
+.type-dragon {
+    color: white;
+    background-color: #243d63;
+}
+
+/*ELETRIC*/
+.circle-type-eletric {
+    background: radial-gradient(circle at 40% -20%, #ccc72e 70%, white 50%);
+}
+
+.type-eletric {
+    color: white;
+    background-color: #ccc72e;
+}
+
+/*FAIRY*/
+.circle-type-fairy {
+    background: radial-gradient(circle at 40% -20%, #d271be 70%, white 50%);
+}
+
+.type-fairy {
+    color: white;
+    background-color: #d271be;
+}
+
+/*FIGHTING*/
+.circle-type-fighting {
+    background: radial-gradient(circle at 40% -20%, #c67621 70%, white 50%);
+}
+
+.type-fighting {
+    color: white;
+    background-color: #c67621;
+}
+
+/*FIRE*/
+.circle-type-fire {
+    background: radial-gradient(circle at 40% -20%, #d9300f 70%, white 50%);
+}
+
+.type-fire {
+    color: white;
+    background-color: #d9300f;
+}
+
+/*FLYING*/
+.circle-type-flying {
+    background: radial-gradient(circle at 40% -20%, #a4b7cb 70%, white 50%);
+}
+
+.type-flying {
+    color: white;
+    background-color: #a4b7cb;
+}
+
+/*GOHST*/
+.circle-type-ghost {
+    background: radial-gradient(circle at 40% -20%, #8140c9 70%, white 50%);
+}
+
+.type-ghost {
+    color: white;
+    background-color: #8140c9;
+}
+
+/*GRASS*/
+.circle-type-grass {
+    background: radial-gradient(circle at 40% -20%, #488f4c 70%, white 50%);
+}
+
+.type-grass {
+    color: white;
+    background-color: #488f4c;
+}
+
+/*GROUND*/
+.circle-type-ground {
+    background: radial-gradient(circle at 40% -20%, #906d46 70%, white 50%);
+}
+
+.type-ground {
+    color: white;
+    background-color: #906d46;
+}
+
+/*ICE*/
+.circle-type-ice {
+    background: radial-gradient(circle at 40% -20%, #73c6c4 70%, white 50%);
+}
+
+.type-ice {
+    color: white;
+    background-color: #73c6c4;
+}
+
+/*NORMAL*/
+.circle-type-normal {
+    background: radial-gradient(circle at 40% -20%, #96a3a3 70%, white 50%);
+}
+
+.type-normal {
+    color: white;
+    background-color: #96a3a3;
+}
+
+/*POISON*/
+.circle-type-poison {
+    background: radial-gradient(circle at 40% -20%, #4d2b74 70%, white 50%);
+}
+
+.type-poison {
+    color: white;
+    background-color: #4d2b74;
+}
+
+/*PSYCHIC*/
+.circle-type-psychic {
+    background: radial-gradient(circle at 40% -20%, #d81aa9 70%, white 50%);
+}
+
+.type-psychic {
+    color: white;
+    background-color: #d81aa9;
+}
+
+/*ROCK*/
+.circle-type-rock {
+    background: radial-gradient(circle at 40% -20%, #441f0d 70%, white 50%);
+}
+
+.type-rock {
+    color: white;
+    background-color: #441f0d;
+}
+
+/*STEEL*/
+.circle-type-steel {
+    background: radial-gradient(circle at 40% -20%, #4c765a 70%, white 50%);
+}
+
+.type-steel {
+    color: white;
+    background-color: #4c765a;
+}
+
+/*WATER*/
+.circle-type-water {
+    background: radial-gradient(circle at 40% -20%, #3663a9 70%, white 50%);
+}
+
+.type-water {
+    color: white;
+    background-color: #3663a9;
+}
