@@ -18,35 +18,64 @@ body {
     margin: 0;
 }
 
-.navbar {
+/*SEARCH BAR*/
+.searchBar-container {
+    position: fixed;
     height: 100px;
+    width: 100%;
     background-color: rgb(134, 8, 8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
 
-.separator {
+.searchBar-container .separator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     height: 10px;
+    width: 100%;
+    z-index: 2;
     background-color: black;
 }
 
-.navbar h2 {
-    margin: 0;
+.searchBar {
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    width: 350px;
 }
 
+.searchBar input {
+    width: 80%;
+}
+
+.searchBar .searchButton {
+    width: 5%;
+}
+
+.searchBar .filterButton {
+    width: 15%;
+}
+
+/*POKEMON GRID*/
 .pokemon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
-    justify-content: center; /* centraliza a grade inteira */
+    justify-content: center;
     align-items: start;
     width: 100%;
-    max-width: 1200px; /* evita que a grid fique muito larga */
-    margin: 0 auto; /* centraliza horizontalmente */
-    padding: 20px;
+    max-width: 1200px;
+    min-width: 370px;
+    margin: 0 auto;
+    padding: 120px 20px 20px;
 }
 
-
 /*POKEMON CARD*/
-
 .pokemon-card {
     height: 220px;
     width: 170px;
@@ -57,6 +86,12 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+
+.pokemon-card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .pokemon-card .card-top {
@@ -124,4 +159,28 @@ body {
     padding: 4px 8px;
     border-radius: 8px;
     font-size: 12px;
+}
+
+/*BUTTON SECTION*/
+.buttonSection {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSection button {
+    font-size: 16px;
+    padding: 10px 35px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: black;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonSection button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
