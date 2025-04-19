@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&');
+@import url('./PokemonTypes.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.pokemonDetails-container {
+    margin: 0;
+}
+
+/*SEARCH BAR*/
+.navbar-container {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background-color: rgb(134, 8, 8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.navbar-container .separator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    z-index: 2;
+    background-color: black;
+}
+
+.pokemonDetails-container .searchBar {
+    display: none;
+}
+
+/*POKEBALL CONTAINER*/
+.navbar-container .pokeball-container {
+    padding: 20px;
+    width: 200px;
+    height: 100%;
+    padding: 0px 0px 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeball-container img{
+    width: 75px;
+}

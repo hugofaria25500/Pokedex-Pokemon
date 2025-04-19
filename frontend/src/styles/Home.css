@@ -18,20 +18,34 @@ body {
     margin: 0;
 }
 
+/*LOGO CONTAINER*/
+.navbar-container .logo-container {
+    padding: 20px;
+    width: 180px;
+    height: 100%;
+    padding: 0px 0px 10px 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.logo-container img{
+    width: 160px;
+}
+
 /*SEARCH BAR*/
-.searchBar-container {
+.navbar-container {
     position: fixed;
     height: 100px;
     width: 100%;
     background-color: rgb(134, 8, 8);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 10;
 }
 
-.searchBar-container .separator {
+.navbar-container .separator {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -41,26 +55,98 @@ body {
     background-color: black;
 }
 
-.searchBar {
-    padding: 5px 10px;
+.home-container .searchBar {
     border: 2px solid black;
     border-radius: 20px;
     background-color: white;
-    width: 350px;
+    width: 400px;
+    display: flex;
+}
+
+.searchBar-left {
+    padding: 5px 10px;
+    height: 10%px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBar-right {
+    width: 25%;
 }
 
 .searchBar input {
-    width: 80%;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    border: none;
+    width: 70%;
 }
 
+.searchBar input:focus {
+    border: none;
+    outline: none;
+  }
+
 .searchBar .searchButton {
-    width: 5%;
+    font-size: 20px;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    margin: 0 5px;
+}
+
+.searchBar .searchButton:hover {
+    cursor: pointer;
+    color: rgb(134, 8, 8);
+    transform: scale(1.1);
 }
 
 .searchBar .filterButton {
-    width: 15%;
+    height: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 0px 10px 10px 0px;
+    border: none;
+    background-color: black;
+    color: white;
+    transition: all 0.2s ease-in-out;
 }
 
+.searchBar .filterButton:hover {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/*POKEBALL CONTAINER*/
+.navbar-container .pokeball-container {
+    padding: 20px;
+    width: 200px;
+    height: 100%;
+    padding: 0px 0px 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeball-container img{
+    width: 75px;
+    transition: all 0.3s ease-in-out;
+}
+
+.pokeball-container img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/*POKEMON LIST CONTAINER*/
+.pokemon-list-container {
+    display: flex;
+    flex-direction: column;
+}
 /*POKEMON GRID*/
 .pokemon-grid {
     display: grid;
@@ -183,4 +269,32 @@ body {
 .buttonSection button:hover {
     cursor: pointer;
     transform: scale(1.05);
+}
+
+
+@media (max-width: 780px) {
+
+    .navbar-container {
+        justify-content: center;
+    }
+
+    .navbar-container .logo-container {
+        display: none;
+    }
+
+    .navbar-container .pokeball-container {
+        display: none;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .searchBar-container {
+        width: 70%;
+    }
+
+    .searchBar-container .searchBar {
+        width: 100%;
+    }
 }

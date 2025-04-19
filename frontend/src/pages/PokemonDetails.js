@@ -1,5 +1,11 @@
+import React from 'react';
+import { SearchBar } from '../components/SearchBar.js';
+import '../styles/PokemonDetails.css';
+
 export const PokemonDetails = () => {
     return (
-        <h1>PokemonDetails Page</h1>
+        <div className="pokemonDetails-container">
+            <SearchBar />
+        </div>
     )
 }
