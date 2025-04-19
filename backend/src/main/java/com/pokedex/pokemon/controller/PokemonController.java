@@ -18,8 +18,8 @@ public class PokemonController {
     }
 
     @GetMapping
-    public List<Pokemon> getPokemonList() throws IOException, InterruptedException {
-        return pokemonService.findFirstDefault();
+    public List<Pokemon> getPokemonList(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = "24") int limit) throws IOException, InterruptedException {
+        return pokemonService.findFirstDefault(offset, limit);
     }
 
     @GetMapping("/{id}")

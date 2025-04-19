@@ -18,15 +18,13 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class PokemonService {
 
-    private List<Pokemon> pokemonList;
-
-    public List<Pokemon> findFirstDefault() throws IOException, InterruptedException {
-        pokemonList = new ArrayList<>();
+    public List<Pokemon> findFirstDefault(int offset, int limit) throws IOException, InterruptedException {
+        List<Pokemon> pokemonList = new ArrayList<>();
 
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest requestFindAll = HttpRequest.newBuilder()
-                .uri(URI.create(PokemonAPI.FIND_FIRST_DEFAULT))
+                .uri(URI.create(PokemonAPI.findPokemonWithinRange(offset, limit)))
                 .build();
 
         HttpResponse<String> responseFindAll = client.send(requestFindAll, HttpResponse.BodyHandlers.ofString());
@@ -77,7 +75,7 @@ public class PokemonService {
         int id = pokemonJsonResponse.getInt("id");
         int generationId = getGenerationIdByPokemonId(id);
 
-        String imageUrl = pokemonJsonResponse.getJSONObject("sprites").getJSONObject("other").getJSONObject("official-artwork").getString("front_default");
+        String imageUrl = pokemonJsonResponse.getJSONObject("sprites").getJSONObject("other").getJSONObject("dream_world").getString("front_default");
 
         List<String> types = new ArrayList<>();
         JSONArray typesResponse = pokemonJsonResponse.getJSONArray("types");
@@ -119,5 +117,18 @@ public class PokemonService {
 
         String generationUrl = pokemonJsonResponse.getJSONObject("generation").getString("url");
         return Integer.parseInt(String.valueOf(generationUrl.charAt(generationUrl.length()-2)));
+    }
+
+    private Pokemon getPokemonById(int pokemonId) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest requestFindAll = HttpRequest.newBuilder()
+                .uri(URI.create(PokemonAPI.findPokemonById(pokemonId)))
+                .build();
+
+        HttpResponse<String> responseFindByName = client.send(requestFindAll, HttpResponse.BodyHandlers.ofString());
+        JSONObject pokemonJsonResponse = new JSONObject(responseFindByName.body());
+
+        return new Pokemon();
     }
 }
